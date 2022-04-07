@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cI3-Mq-W2g">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--To DoVC-->
+        <scene sceneID="vLg-FH-BNB">
+            <objects>
+                <viewController id="cI3-Mq-W2g" customClass="ToDoVC" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fp1-iH-EGf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-dj-brm">
+                                <rect key="frame" x="0.0" y="84" width="414" height="812"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" id="qGZ-E5-Y7Z" customClass="TableViewCell" customModule="Todoey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qGZ-E5-Y7Z" id="fIw-a2-ksh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DQ-tv-2lU">
+                                                    <rect key="frame" x="36" y="11" width="342" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9DQ-tv-2lU" secondAttribute="bottom" id="In5-8y-JSy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9DQ-tv-2lU" secondAttribute="trailing" constant="16" id="NH6-v6-Q1r"/>
+                                                <constraint firstItem="9DQ-tv-2lU" firstAttribute="top" secondItem="fIw-a2-ksh" secondAttribute="topMargin" id="Ofi-cE-PV0"/>
+                                                <constraint firstItem="9DQ-tv-2lU" firstAttribute="leading" secondItem="fIw-a2-ksh" secondAttribute="leadingMargin" constant="16" id="v5t-n8-NFs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="todoLbl" destination="9DQ-tv-2lU" id="bBm-U0-FNL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cI3-Mq-W2g" id="i6E-LA-Frl"/>
+                                    <outlet property="delegate" destination="cI3-Mq-W2g" id="MMd-h5-sHv"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA5-A0-So8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLF-Ec-oAC">
+                                <rect key="frame" x="0.0" y="39" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" systemColor="systemBlueColor"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Todoey" id="lBk-c6-qTo">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZJZ-9q-sjb">
+                                            <connections>
+                                                <action selector="addBtnPressed:" destination="cI3-Mq-W2g" id="Nk5-fy-9Vf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0Fj-Q8-p2G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xhc-dj-brm" firstAttribute="top" secondItem="0Fj-Q8-p2G" secondAttribute="top" constant="40" id="2Ws-MT-DEN"/>
+                            <constraint firstAttribute="bottom" secondItem="Xhc-dj-brm" secondAttribute="bottom" id="Jb4-NJ-NBm"/>
+                            <constraint firstItem="rA5-A0-So8" firstAttribute="leading" secondItem="Fp1-iH-EGf" secondAttribute="leading" id="Mr3-Wv-uhi"/>
+                            <constraint firstItem="Xhc-dj-brm" firstAttribute="top" secondItem="rA5-A0-So8" secondAttribute="bottom" id="TrI-3X-gVa"/>
+                            <constraint firstAttribute="trailing" secondItem="rA5-A0-So8" secondAttribute="trailing" id="a2l-Sz-f5I"/>
+                            <constraint firstItem="0Fj-Q8-p2G" firstAttribute="trailing" secondItem="Xhc-dj-brm" secondAttribute="trailing" id="oNN-Pj-8zv"/>
+                            <constraint firstItem="Xhc-dj-brm" firstAttribute="leading" secondItem="0Fj-Q8-p2G" secondAttribute="leading" id="p9B-GB-V9e"/>
+                            <constraint firstItem="rA5-A0-So8" firstAttribute="top" secondItem="Fp1-iH-EGf" secondAttribute="top" id="tGy-dU-X3J"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="todoTableView" destination="Xhc-dj-brm" id="AB6-uS-PjE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QzE-aQ-dZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2384.057971014493" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
