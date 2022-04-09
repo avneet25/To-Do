@@ -11,26 +11,25 @@ class ToDoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var todoTableView: UITableView!
     var itemArray = [Item()]
-    let defaults = UserDefaults.standard
-    let KEY = "ToDoKey"
+    let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+ 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        let newItem = Item()
-        let newItem2 = Item()
-        newItem.title = "Todo"
-        newItem2.title = "CoreData"
-        itemArray.append(newItem)
-        itemArray.append(newItem2)
         
-        if let items = defaults.array(forKey: KEY) as? [Item]
-        {
-            itemArray = items
-            print(itemArray)
-        }
+        super.viewDidLoad()
+        designInit()
+        loadItems()
         
     }
   
+    func designInit()
+    {
+        todoTableView.rowHeight = 60
+        todoTableView.tableFooterView = UIView()
+        todoTableView.separatorInset = UIEdgeInsets.init(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    //MARK: Button actions
     @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
         
         var tempTextFeild = UITextField()
@@ -41,9 +40,8 @@ class ToDoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let action = UIAlertAction.init(title: "Done", style: .default) { [self] action in
             //what happens when user clicks Done button on UIAlert
             newItem.title = tempTextFeild.text!
-            self.itemArray.append(newItem)
-            self.defaults.set(self.itemArray, forKey: KEY)
-            self.todoTableView.reloadData()
+            itemArray.append(newItem)
+            saveItems()
         }
         
         alert.addTextField { alertTextFeild in
@@ -61,19 +59,25 @@ class ToDoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Tableview data source methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if itemArray[0].title == "" {
+            return itemArray.count-1
+        }
         return itemArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = todoTableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! TableViewCell
-      
-        let item = itemArray[indexPath.row]
-        cell.todoLbl.text = item.title
         
+        var item = itemArray[indexPath.row]
+        
+        if item.title == "" {
+            itemArray.remove(at: indexPath.row)
+            item = itemArray[indexPath.row]
+        }
+        cell.todoLbl.text = item.title
+   
 //        value = condition ? valueIfTrue : valueIfFalse
         cell.accessoryType = item.done ? .checkmark : .none
-       
-        
         return cell
     }
 
@@ -82,10 +86,37 @@ class ToDoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         todoTableView.deselectRow(at: indexPath, animated: true)
-        
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        todoTableView.reloadData()
+        saveItems()
     }
 
+    // MARK: Model Manipulation Methods
+    func saveItems()
+    {
+        let encoder = PropertyListEncoder() //initialising the encoder
+        
+        do{
+            let data = try encoder.encode(itemArray) //encoding data
+            try data.write(to: filePath!) //writing to .plist
+        }catch {
+            print("Error encoding itemarray, \(error)")
+        }
+        
+        self.todoTableView.reloadData()
+    }
+    
+    func loadItems(){
+        if let data = try? Data(contentsOf: filePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+            itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+            print("Error decoding item array, \(error)")
+                
+            }
+        }
+    }
 }
+
+
 

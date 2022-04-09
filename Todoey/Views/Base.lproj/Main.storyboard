@@ -20,29 +20,29 @@
                                 <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" id="qGZ-E5-Y7Z" customClass="TableViewCell" customModule="Todoey" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" id="H86-hI-Mfq" customClass="TableViewCell" customModule="Todoey" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qGZ-E5-Y7Z" id="fIw-a2-ksh">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H86-hI-Mfq" id="u22-PI-QmG">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DQ-tv-2lU">
-                                                    <rect key="frame" x="36" y="11" width="342" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMR-ls-S7v">
+                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="9DQ-tv-2lU" secondAttribute="bottom" id="In5-8y-JSy"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9DQ-tv-2lU" secondAttribute="trailing" constant="16" id="NH6-v6-Q1r"/>
-                                                <constraint firstItem="9DQ-tv-2lU" firstAttribute="top" secondItem="fIw-a2-ksh" secondAttribute="topMargin" id="Ofi-cE-PV0"/>
-                                                <constraint firstItem="9DQ-tv-2lU" firstAttribute="leading" secondItem="fIw-a2-ksh" secondAttribute="leadingMargin" constant="16" id="v5t-n8-NFs"/>
+                                                <constraint firstItem="AMR-ls-S7v" firstAttribute="top" secondItem="u22-PI-QmG" secondAttribute="topMargin" id="QIU-6j-NSy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AMR-ls-S7v" secondAttribute="trailing" id="SCx-dh-84p"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AMR-ls-S7v" secondAttribute="bottom" id="ovs-72-dAE"/>
+                                                <constraint firstItem="AMR-ls-S7v" firstAttribute="leading" secondItem="u22-PI-QmG" secondAttribute="leadingMargin" id="wht-aY-4yM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="todoLbl" destination="9DQ-tv-2lU" id="bBm-U0-FNL"/>
+                                            <outlet property="todoLbl" destination="AMR-ls-S7v" id="zAP-B6-oKH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -54,6 +54,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA5-A0-So8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="8ms-Sp-V9P"/>
+                                </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLF-Ec-oAC">
                                 <rect key="frame" x="0.0" y="39" width="414" height="44"/>
@@ -78,7 +81,6 @@
                         <viewLayoutGuide key="safeArea" id="0Fj-Q8-p2G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Xhc-dj-brm" firstAttribute="top" secondItem="0Fj-Q8-p2G" secondAttribute="top" constant="40" id="2Ws-MT-DEN"/>
                             <constraint firstAttribute="bottom" secondItem="Xhc-dj-brm" secondAttribute="bottom" id="Jb4-NJ-NBm"/>
                             <constraint firstItem="rA5-A0-So8" firstAttribute="leading" secondItem="Fp1-iH-EGf" secondAttribute="leading" id="Mr3-Wv-uhi"/>
                             <constraint firstItem="Xhc-dj-brm" firstAttribute="top" secondItem="rA5-A0-So8" secondAttribute="bottom" id="TrI-3X-gVa"/>
