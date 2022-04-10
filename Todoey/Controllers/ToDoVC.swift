@@ -10,7 +10,7 @@ import UIKit
 class ToDoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var todoTableView: UITableView!
-    var itemArray = [Item()]
+    var itemArray = [Item]()
     let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
  
     
@@ -59,21 +59,13 @@ class ToDoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Tableview data source methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if itemArray[0].title == "" {
-            return itemArray.count-1
-        }
         return itemArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = todoTableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! TableViewCell
         
-        var item = itemArray[indexPath.row]
-        
-        if item.title == "" {
-            itemArray.remove(at: indexPath.row)
-            item = itemArray[indexPath.row]
-        }
+        let item = itemArray[indexPath.row]
         cell.todoLbl.text = item.title
    
 //        value = condition ? valueIfTrue : valueIfFalse
